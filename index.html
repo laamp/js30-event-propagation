@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/png"
+    href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/google/146/snowboarder_1f3c2.png" />
+  <title>Understanding JavaScript's Capture</title>
+</head>
+
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    div {
+      width: 100%;
+      padding: 100px;
+    }
+
+    .one {
+      background: lightgrey;
+    }
+
+    .two {
+      background: beige;
+    }
+
+    .three {
+      background: teal;
+    }
+
+  </style>
+
+  <button class="the-button">This is a button!!!</button>
+  <script>
+    const divs = document.querySelectorAll('div');
+    const button = document.querySelector('.the-button');
+
+    function logText(e) {
+      console.log(this.classList.value);
+      e.stopPropagation();
+    }
+
+    divs.forEach(d => d.addEventListener('click', logText));
+    button.addEventListener('click', logText, {
+      once: true
+    });
+
+  </script>
+</body>
+
+</html>
